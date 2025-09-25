@@ -170,12 +170,16 @@ Linus Stuhlmann, Michael Saxer, Jonathan Fürst
 Please cite our work:
 
 ```bibtex
-@article{stuhlmann2025efficient,
-  title={Efficient and Reproducible Biomedical Question Answering using Retrieval Augmented Generation},
-  author={Stuhlmann, Linus and Saxer, Michael Alexander and F{\"u}rst, Jonathan},
-  journal={arXiv preprint arXiv:2505.07917},
-  year={2025}
-}
+@INPROCEEDINGS{11081505,
+  author={Stuhlmann, Linus and Saxer, Michael Alexander and Fürst, Jonathan},
+  booktitle={2025 IEEE Swiss Conference on Data Science (SDS)}, 
+  title={Efficient and Reproducible Biomedical Question Answering Using Retrieval Augmented Generation}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={154-157},
+  keywords={Accuracy;Scalability;Large language models;Retrieval augmented generation;Data science;Information retrieval;Question answering (information retrieval);Hybrid power systems;Time factors;Indexing;Biomedical Information Retrieval;RetrievalAugmented Generation;Hybrid Retrieval;Large Language Models;PubMed;Information Retrieval Systems},
+  doi={10.1109/SDS66131.2025.00029}}
 ```
 
 [Read the paper on arXiv](https://arxiv.org/abs/2505.07917)
