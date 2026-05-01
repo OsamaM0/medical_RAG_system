@@ -1,18 +1,10 @@
-from elasticsearch import Elasticsearch
-import os
 import json
+from retriever_config import build_elasticsearch_client, get_elasticsearch_index
 
 class BM25Retriever:
     def __init__(self):
-        elastic_password = os.getenv('ELASTIC_PASSWORD')
-        self.es = Elasticsearch(
-            ['https://localhost:9200'],
-            basic_auth=('elastic', elastic_password),
-            verify_certs=True,
-            ca_certs="/home/rag/.crt/http_ca.crt",
-            request_timeout=60
-        )
-        self.index = "pubmed_index"
+        self.es = build_elasticsearch_client(request_timeout=60)
+        self.index = get_elasticsearch_index()
 
     def retrieve_docs(self, query: str, k: int = 10):
         es_query = {

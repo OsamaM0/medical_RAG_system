@@ -1,22 +1,15 @@
 from medCPT_encoder import MedCPTQueryEncoder, MedCPTCrossEncoder
-from elasticsearch import Elasticsearch
-import os
 import requests
 import json
+from retriever_config import build_elasticsearch_client, get_elasticsearch_index, get_faiss_search_url, get_faiss_timeout
 
 
 class MedCPTRetriever:
     def __init__(self, rerank=True):
-        elastic_password = os.getenv('ELASTIC_PASSWORD')
-        self.es = Elasticsearch(
-            ['https://localhost:9200'],
-            basic_auth=('elastic', elastic_password),
-            verify_certs=True,
-            ca_certs="/home/ubuntu/.crts/http_ca.crt",
-            request_timeout=60
-        )
-        self.index = "pubmed_index"
-        self.faiss_url = "http://localhost:5000/search"
+        self.es = build_elasticsearch_client(request_timeout=60)
+        self.index = get_elasticsearch_index()
+        self.faiss_url = get_faiss_search_url()
+        self.faiss_timeout = get_faiss_timeout()
         self.text_encoder = MedCPTQueryEncoder()
         self.reranker = MedCPTCrossEncoder()
         self.rerank_enabled = rerank
@@ -33,7 +26,8 @@ class MedCPTRetriever:
             'queries': [vec],  # List of vectors
             'k': k
         }
-        response = requests.post(self.faiss_url, headers={'Content-Type': 'application/json'}, data=json.dumps(data))
+        response = requests.post(self.faiss_url, headers={'Content-Type': 'application/json'}, data=json.dumps(data), timeout=self.faiss_timeout)
+        response.raise_for_status()
         return response.json()
 
     def get_docs_via_PMIDs(self, PMIDs: list):

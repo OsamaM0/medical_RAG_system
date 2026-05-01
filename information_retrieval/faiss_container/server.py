@@ -1,16 +1,17 @@
 from flask import Flask, request, jsonify
 import faiss
 import numpy as np
+import os
 import pandas as pd
 
 app = Flask(__name__)
 
 # Load the Faiss index (assuming the index has already been created and saved)
-index_path = "/app/faiss_indices/bioBERT_index.index"
+index_path = os.getenv("FAISS_INDEX_PATH", "/app/faiss_indices/bioBERT_index.index")
 index = faiss.read_index(index_path)
 
 # Load PMIDs and their respective index numbers
-pmids_path = "/app/PMIDs/bioBERT_pmids.csv"
+pmids_path = os.getenv("FAISS_PMIDS_PATH", "/app/PMIDs/bioBERT_pmids.csv")
 pmids_df = pd.read_csv(pmids_path)
 
 # Create a dictionary to map index numbers to PMIDs

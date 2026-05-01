@@ -2,20 +2,20 @@
 
 import json
 import os
+import sys
 from pathlib import Path
 from tqdm import tqdm
-from elasticsearch import Elasticsearch, helpers
+from elasticsearch import helpers
 
-password = os.getenv("ELASTIC_PASSWORD")
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(PROJECT_ROOT / "rag_system"))
 
-es = Elasticsearch(
-    hosts=[{"host": "localhost", "port": 9200, "scheme": "https"}],
-    ca_certs="/home/rag/.crt/http_ca.crt",
-    basic_auth=("elastic", password),
-)
+from retriever_config import build_elasticsearch_client, get_elasticsearch_index
+
+es = build_elasticsearch_client(request_timeout=60)
 
 # Define the index name
-index_name = "pubmed_index"
+index_name = get_elasticsearch_index()
 
 # Delete the index if it exists
 if es.indices.exists(index=index_name):
@@ -55,8 +55,8 @@ if not es.indices.exists(index=index_name):
 # Create the index with the defined mapping
 es.indices.create(index=index_name, body=mapping)
 
-source_directory = Path('/home/rag/data/chunk')
-error_log_path = Path('./errors.jsonl')  # Pfad zur Fehlerprotokolldatei
+source_directory = Path(os.getenv("PUBMED_SUBSET_DIR", "/home/rag/data/chunk")).expanduser()
+error_log_path = Path(os.getenv("ELASTIC_INGEST_ERRORS", "./errors.jsonl")).expanduser()
 
 def bulk_index_documents(source_directory, index_name, error_log_path):
     if not source_directory.exists():
