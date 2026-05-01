@@ -1,0 +1,8 @@
+path,status,name,family,retriever
+L:\Works\Freelance\medical_RAG_system\evaluation\gemma_reproduction_outputs\e2e_retriever_1.json,missing,e2e_biobert,end_to_end,BioBERT
+L:\Works\Freelance\medical_RAG_system\evaluation\gemma_reproduction_outputs\e2e_retriever_2.json,missing,e2e_bm25,end_to_end,BM25
+L:\Works\Freelance\medical_RAG_system\evaluation\gemma_reproduction_outputs\e2e_retriever_3.json,missing,e2e_hybrid_bm25_+_medcpt,end_to_end,Hybrid BM25 + MedCPT
+L:\Works\Freelance\medical_RAG_system\evaluation\gemma_reproduction_outputs\e2e_retriever_4.json,missing,e2e_medcpt,end_to_end,MedCPT
+L:\Works\Freelance\medical_RAG_system\evaluation\gemma_reproduction_outputs\hybrid_depth_20.json,missing,hybrid_depth_20,retrieval_depth_ablation,Hybrid BM25 + MedCPT
+L:\Works\Freelance\medical_RAG_system\evaluation\gemma_reproduction_outputs\hybrid_depth_50.json,missing,hybrid_depth_50,retrieval_depth_ablation,Hybrid BM25 + MedCPT
+L:\Works\Freelance\medical_RAG_system\evaluation\gemma_reproduction_outputs\hybrid_depth_100.json,missing,hybrid_depth_100,retrieval_depth_ablation,Hybrid BM25 + MedCPT

@@ -26,6 +26,8 @@ more-itertools==8.10.0  # More routines for operating on iterables, beyond itert
 nbconvert==7.16.3  # Convert Jupyter Notebooks
 numpy==1.26.4  # Fundamental package for array computing
 openai==1.23.3  # OpenAI API client
+google-genai>=1.0.0  # Google GenAI API client for Gemma/Gemini models
+pypdf>=4.2.0  # PDF parsing for paper-driven experiment notebooks
 packaging==24.0  # Core utilities for Python packages
 pandas==2.2.2  # Data analysis and manipulation library
 prompt-toolkit==3.0.43  # Library for building powerful interactive command lines

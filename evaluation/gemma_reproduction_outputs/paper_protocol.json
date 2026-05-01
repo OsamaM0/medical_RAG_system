@@ -1,0 +1,39 @@
+{
+  "dataset": "BioASQ Task-B yes/no questions over PubMed abstracts; 2.4M subset for component analysis and 24M PubMed corpus for final system.",
+  "document_fields": [
+    "PMID",
+    "title",
+    "abstract/content"
+  ],
+  "retrievers": [
+    "BM25",
+    "BioBERT",
+    "MedCPT",
+    "Hybrid BM25 + MedCPT cross-encoder"
+  ],
+  "stores": [
+    "MongoDB sparse TF-IDF",
+    "Elasticsearch sparse BM25",
+    "Elasticsearch dense KNN",
+    "FAISS dense L2"
+  ],
+  "generator_original": "GPT-3.5-turbo, API version May 2024, temperature=0",
+  "generator_reproduction": "gemma-4-32b-it",
+  "prompt_parts": [
+    "system prompt",
+    "user question",
+    "retrieved documents with PMIDs, titles, content, scores"
+  ],
+  "reported_metrics": [
+    "index response time",
+    "indexing speed",
+    "retriever recall",
+    "retriever precision",
+    "accuracy",
+    "recall",
+    "precision",
+    "F1 score",
+    "retrieval time",
+    "total time"
+  ]
+}

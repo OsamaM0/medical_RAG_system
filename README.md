@@ -62,6 +62,7 @@ The Medical RAG System is designed to enhance medical information retrieval and 
 │   ├── bioBERT_encoder.py
 │   ├── bioBERT_retriever.py
 │   ├── bm25_retriever.py
+│   ├── gemma_chat.py
 │   ├── hybrid_retriever.py
 │   ├── medCPT_encoder.py
 │   ├── medCPT_retriever.py
@@ -112,7 +113,10 @@ The system can be used for different purposes, including document retrieval, que
 ### Question Answering System
 
 - **Medical RAG**: `rag_system/med_rag.py`
-- **OpenAI Chat**: `rag_system/openAI_chat.py`
+- **Google Gemma Chat**: `rag_system/gemma_chat.py`
+- **OpenAI Chat**: `rag_system/openAI_chat.py` (optional legacy comparison path)
+
+Gemma is the default generation provider in `MedRAG`. Set `GOOGLE_API_KEY` or `GEMINI_API_KEY` in your environment and, if needed, set `GEMMA_MODEL` to the exact model ID enabled for your Google AI account. The default model ID is `gemma-4-32b-it`.
 
 ### Datasets
 
