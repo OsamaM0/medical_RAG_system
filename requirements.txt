@@ -8,6 +8,7 @@ beautifulsoup4==4.12.3  # Screen-scraping library
 bleach==6.1.0  # Sanitize your inputs
 click==8.1.7  # Command Line Interface Creation Kit
 decorator==5.1.1  # Simplifies the usage of decorators
+datasets>=2.19.0  # Hugging Face datasets for Colab/free-tier PubMedQA materialization
 elastic-transport==8.13.0  # Transport layer for Elasticsearch
 elasticsearch==8.13.0  # Official Elasticsearch client
 faiss-cpu==1.8.0  # A library for efficient similarity search and clustering
@@ -36,6 +37,7 @@ pydantic==2.7.1  # Data validation and settings management using Python type ann
 Pygments==2.17.2  # Syntax highlighting package
 regex==2024.4.16  # Alternative regular expression module
 requests==2.31.0  # Simple HTTP library for Python
+rank-bm25>=0.2.2  # Lightweight BM25 baseline used by free-tier notebooks
 scikit-learn==1.4.2  # Machine learning library
 scipy==1.13.0  # Fundamental library for scientific computing
 sentence-transformers==2.7.0  # BERT and SentenceTransformers library
